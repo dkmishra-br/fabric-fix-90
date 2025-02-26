@@ -36,6 +36,11 @@ transport_nodes:
     - name: uplinkProfile1
       type: UplinkHostSwitchProfile
     host_switch_name: hostswitch1
+    host_switch_type: VDS
+    host_switch_mode: ENS_INTERRUPT
+    uplinks:
+      - vds_uplink_name: Uplink 1
+        uplink_name: uplink-1
     # pnics:
     # - device_name: "vmnic1"
     #   uplink_name: "uplink-1"

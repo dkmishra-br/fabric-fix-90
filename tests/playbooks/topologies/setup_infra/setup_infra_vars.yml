@@ -23,7 +23,7 @@
   # Common NSX Appliance variables
   #
   "nsx_username": "admin",
-  "nsx_password": "myPassword1!myPassword1!",
+  "nsx_password": "Admin!23Admin",
   "validate_certs": False,
 
   #
@@ -31,11 +31,11 @@
   # Accepts both IP (IPv4) and FQDN for 'mgmt_ip'
   #
   "nsx_node1": {
-    "hostname": "mynsx-01.mylab.local",
-    "mgmt_ip": "10.114.200.41",
-    "datacenter": "Datacenter",
-    "cluster": "Management",
-    "datastore": "datastore36",
+    "hostname": "nsx-manager",
+    "mgmt_ip": "10.161.246.197",
+    "datacenter": "Datacenter1",
+    "cluster": "os-compute-cluster-1",
+    "datastore": "datastore1",
     "portgroup": "VM Network"
   },
 
@@ -43,20 +43,22 @@
     {
       "display_name": "Overlay-TZ",
       "description": "NSX Configured Overlay Transport Zone",
-      "transport_type": "OVERLAY",
-      "host_switch_name": "nvds"
+      "tz_type": "OVERLAY_BACKED"
+#      "transport_type": "OVERLAY",
+#      "host_switch_name": "nvds"
     },
     {
       "display_name": "VLAN-TZ",
       "description": "NSX Configured VLAN Transport Zone",
-      "transport_type": "VLAN",
-      "host_switch_name": "nvds"
+      "tz_type": "VLAN_BACKED"
+#      "transport_type": "VLAN",
+#      "host_switch_name": "nvds"
     }
   ],
 
   "ip_pools": [
     {
-      "display_name": "to-del-TEP-IP-Pool",
+      "display_name": "TEP-IP-Pool",
       "pool_static_subnets": [
         {
           "display_name": "TEP_ip_pool_subnet",
@@ -81,8 +83,8 @@
       "host_switches": [
         {
 
-          "host_switch_name": "vds7",
-          "host_switch_id": "50 35 17 4a 3d be 59 37-57 d0 0d 03 11 ae 7e a2",
+          "host_switch_name": "hostswitch1",
+          "host_switch_id": "50 17 4c 3f 86 bf 44 be-11 6f 69 80 90 f7 22 21",
           "host_switch_type": "VDS",
           "host_switch_mode": "STANDARD",
           "host_switch_profiles": [
@@ -94,11 +96,11 @@
           "pnics": [],
           "uplinks": [
             {
-              "vds_uplink_name": "uplink1",
+              "vds_uplink_name": "Uplink 1",
               "uplink_name": "uplink-1"
             },
             {
-              "vds_uplink_name": "uplink2",
+              "vds_uplink_name": "Uplink 2",
               "uplink_name": "uplink-2"
             }
           ],
@@ -112,8 +114,8 @@
             }
           ]
         }
-      ],
-      "transport_zone_endpoints": []
+      ]
+#      "transport_zone_endpoints": []
     }
   ],
 
@@ -164,39 +166,39 @@
           ]
         }
       ],
-      "transport_zone_endpoints": [],
+#      "transport_zone_endpoints": [],
       "node_deployment_info": {
         "deployment_type": "VIRTUAL_MACHINE",
         "deployment_config": {
           "form_factor": "SMALL",
           "vm_deployment_config": {
-            "vc_name": "vcenter",
-            "vc_username": "administrator@madhu.local",
-            "vc_password": "VMware1!",
-            "storage": "datastore7",
-            "compute": "Management",
-            "host": "10.114.200.7",
+            "vc_name": "VC1",
+            "vc_username": "administrator@vsphere.local",
+            "vc_password": "RJPRBf3ec+is-1aL",
+            "storage": "datastore1 (5)",
+            "compute": "cluster-3",
+            "host": "10.161.172.162",
             "data_networks": [
               "VM Network",
-              "lab-dvpg",
-              "lab-dvpg"
+#              "lab-dvpg",
+#              "lab-dvpg"
             ],
-            "default_gateway_addresses": [ "10.114.200.1" ],
+            "default_gateway_addresses": [ "10.161.168.1" ],
             "management_network": "VM Network",
-            "management_port_subnets": [
-              {
-                "ip_addresses": [ "10.114.200.14" ],
-                "prefix_length": 27
-              }
-            ],
+#            "management_port_subnets": [
+#              {
+#                "ip_addresses": [ "10.114.200.14" ],
+#                "prefix_length": 27
+#              }
+#            ],
             "placement_type": "VsphereDeploymentConfig"
           },
           "node_user_settings": {
             "cli_username": "admin" ,
-            "root_password": "myPassword1!myPassword1!",
-            "cli_password": "myPassword1!myPassword1!",
+            "root_password": "QHDB5-D3bTtb_czr",
+            "cli_password": "QHDB5-D3bTtb_czr",
             "audit_username": "audit",
-            "audit_password": "myPassword1!myPassword1!"
+            "audit_password": "QHDB5-D3bTtb_czr"
           }
         },
         "node_settings": {
