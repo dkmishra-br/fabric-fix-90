@@ -1,7 +1,7 @@
 # Copyright 2018 VMware, Inc.
 # SPDX-License-Identifier: BSD-2-Clause OR GPL-3.0-only
 ---
-hostname: "10.161.157.200"
+hostname: "10.160.240.208"
 username: "admin"
 password: "Admin!23Admin"
 validate_certs: False
@@ -13,11 +13,14 @@ ip_pools:
     - start: "10.112.201.28"
       end: "10.112.201.35"
     cidr: "10.112.201.0/24"
+    resource_type: "IpAddressPoolStaticSubnet"
+    name: subnet-1
 
 transportzones:
 - display_name: "TZ1"
-  transport_type: "OVERLAY"
-  host_switch_name: "hostswitch1"
+  tz_type: "OVERLAY_BACKED"
+  #transport_type: "OVERLAY"
+  #host_switch_name: "hostswitch1"
 
 uplink_profiles:
 - display_name: uplinkProfile1
@@ -35,21 +38,23 @@ transport_node_profiles:
     - name: uplinkProfile1
       type: UplinkHostSwitchProfile
     host_switch_name: hostswitch1
-    pnics:
-    - device_name: vmnic1
-      uplink_name: "uplink-1"
+    host_switch_type: VDS
+    uplinks:
+    - vds_uplink_name: Uplink 1
+      uplink_name: uplink-1
     ip_assignment_spec:
       resource_type: StaticIpPoolSpec
       ip_pool_name: "IPPool-IPV4-1"
-  transport_zone_endpoints:
-  - transport_zone_name: "TZ1"
+    transport_zone_endpoints:
+    - transport_zone_name: "TZ1"
 
 
 compute_managers:
 - display_name: "VC1"
-  server: "10.161.129.87"
+  server: "10.162.72.205"
   origin_type: vCenter
   credential_type: UsernamePasswordLoginCredential
   username: "administrator@vsphere.local"
-  password: "Admin!23"
-  thumbprint: "46:1E:31:DD:0B:37:4C:F0:91:5B:49:A1:A1:94:B5:DF:82:93:90:52:D9:68:0F:86:C8:CA:6C:34:CB:82:D7:D5"
+  password: "RJPRBf3ec+is-1aL"
+  thumbprint: "0E:59:78:7D:DE:09:35:FC:93:56:B4:EB:39:90:6A:D1:B0:DE:0E:B8:2D:AF:A8:3A:D5:38:FB:3C:FA:10:C2:20"
+#  thumbprint: "5B:9B:07:EA:61:53:F9:EA:28:B3:DD:46:65:01:E3:CD:36:E7:03:C6:C0:78:81:6D:44:AB:21:65:5E:E4:5A:F7"
